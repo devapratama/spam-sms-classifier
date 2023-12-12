@@ -1,6 +1,9 @@
 import streamlit as st
 from joblib import load
 
+import nltk
+nltk.data.path.append('nltk_data/')
+
 # Load the saved TfidfVectorizer and model from the .joblib files
 vectorizer = load('tfidf_vectorizer.joblib')
 model = load('spam_class.joblib')
