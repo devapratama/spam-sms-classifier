@@ -2,7 +2,10 @@ import streamlit as st
 from joblib import load
 
 import nltk
-nltk.data.path.append('nltk_data/')
+import os
+
+# Set the NLTK to use the nltk_data folder in the current directory
+nltk.data.path.append(os.path.join(os.getcwd(), 'nltk_data'))
 
 # Load the saved TfidfVectorizer and model from the .joblib files
 vectorizer = load('tfidf_vectorizer.joblib')
