@@ -7,6 +7,9 @@ import os
 # Set the NLTK to use the nltk_data folder in the current directory
 nltk.data.path.append(os.path.join(os.getcwd(), 'nltk_data'))
 
+# Set the page config to change the tab title and favicon
+st.set_page_config(page_title="Spam SMS Classifier", page_icon="📱", layout="wide")
+
 # Load the saved TfidfVectorizer and model from the .joblib files
 vectorizer = load('tfidf_vectorizer.joblib')
 model = load('spam_class.joblib')
