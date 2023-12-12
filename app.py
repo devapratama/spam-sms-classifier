@@ -54,6 +54,5 @@ if st.button('Predict'):
 # Footer with contact information or additional details
 st.markdown("""
     <hr>
-    SMS Spam Prediction Tool by [Your Name or Company](Your Website or GitHub link).
-    For inquiries, contact us at [email@example.com](mailto:email@example.com).
+    SMS Spam Prediction Tool by STKI Kelompok 1.
 """, unsafe_allow_html=True)
