@@ -1,6 +1,5 @@
 import streamlit as st
-from joblib import load
-
+import pickle
 import nltk
 import os
 
@@ -10,9 +9,12 @@ nltk.data.path.append(os.path.join(os.getcwd(), 'nltk_data'))
 # Set the page config to change the tab title and favicon
 st.set_page_config(page_title="Spam SMS Classifier", page_icon="📱", layout="wide")
 
-# Load the saved TfidfVectorizer and model from the .joblib files
-vectorizer = load('tfidf_vectorizer.joblib')
-model = load('spam_class.joblib')
+# Load the saved TfidfVectorizer and Naive Bayes model from the .pkl files
+with open('tfidf_vectorizer.pkl', 'rb') as f:
+    vectorizer = pickle.load(f)
+
+with open('naive_bayes_model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 # Define the label dictionary
 label_dict = {0: 'Normal', 1: 'Fraud/Penipuan', 2: 'Promo'}
@@ -29,7 +31,7 @@ st.title('SMS Spam Prediction Tool')
 st.write('This tool predicts whether a given SMS message is normal, fraudulent, or promotional.')
 
 # Text box for user input
-input_sms = st.text_area("Enter the SMS text you want to analyze:", "")
+input_sms = st.text_area("Enter the SMS text you want in Indonesian to analyze:", "")
 
 # Process the user input and make a prediction
 def classify_message(model, vectorizer, message):
@@ -52,7 +54,6 @@ if st.button('Predict'):
             <br>
             """, unsafe_allow_html=True)
 
-        
         # Display prediction probabilities as percentages
         st.subheader('Prediction Probabilities:')
         for index, label in enumerate(label_dict.values()):
@@ -63,5 +64,5 @@ if st.button('Predict'):
 # Footer with contact information or additional details
 st.markdown("""
     <hr>
-    SMS Spam Prediction Tool by STKI Kelompok 1.
+    SMS Spam Prediction Tool by Deva.
 """, unsafe_allow_html=True)
