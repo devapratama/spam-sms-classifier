@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 streamlit==1.29.0
 pickle==4.0
 nltk==3.8.1
 scikit-learn==1.3.2
+=======
+streamlit==1.37.1
+scikit-learn==1.3.0
+joblib==1.3.2
+nltk==3.8.1
+>>>>>>> 06d05d1788c1d077dd24806230bb3c52b6b6cbf7
